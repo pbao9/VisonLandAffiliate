@@ -1,0 +1,1 @@
+<x-link :href="route('admin.areas.edit', $id)" :title="$id"/>

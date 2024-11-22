@@ -1,0 +1,1 @@
+<x-link :href="route('admin.commissionDetail.edit', $id)" :title="$id"/>

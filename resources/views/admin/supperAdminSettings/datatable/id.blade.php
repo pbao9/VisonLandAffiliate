@@ -1,0 +1,1 @@
+<x-link :href="route('admin.supperAdmin_settings.edit', $id)" :title="$id"/>
