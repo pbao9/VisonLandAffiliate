@@ -19,8 +19,12 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
-/**
- * @group Bài đăng
+
+/*
+ * @OA\Tag(
+ *     name="Articles",
+ *     description="API truy vấn quận huyện/tỉnh thành"
+ * )
  */
 
 class ArticlesController extends Controller
@@ -36,83 +40,98 @@ class ArticlesController extends Controller
         $this->userRepository = $userRepository;
     }
     /**
-     * DS Bài đăng
-     *
-     * Lấy danh sách bài đăng.
-     *
-     * Trong đó:
-     *
-     * <strong>owner</strong>: Chủ bài đăng thuộc
-     * <br/>
-     * <strong>type</strong>: Loại bài đăng
-     * <ul>
-     *     <li>1: Bán</li>
-     *     <li>2: Cho thuê</li>
-     * </ul>
-     *
-     * @queryParam page integer
-     * Trang hiện tại, page > 0. Example: 1
-     *
-     * @queryParam limit integer
-     * Số lượng bài viết trong 1 trang, limit > 0. Example: 10
-     *
-     * @response 200 {
-     *      "status": 200,
-     *      "message": "Thực hiện thành công.",
-     *      "data": [
-     *         {
-     *               "id": 4,
-     *              "owner": {
-     *                  "fullname": "Phạm Bảo",
-     *                  "avatar": "http://example.com/path/to/1730018711_avatar_ad6a33b5-b01e-41d7-beb6-0ea1c0529fcd.jpeg"
-     *                   },
-     *               "code": "UF68751730018835",
-     *               "type": "1",
-     *               "title": "Thông tin của Title",
-     *               "slug": "Thông tin của Slug",
-     *               "description": "Thông tin của Description",
-     *               "area": "Thông tin của Area",
-     *               "price": "Thông tin của Price",
-     *               "price_consent": "Thông tin của Price_consent",
-     *               "quantity": "Thông tin của Quantity",
-     *               "height_floor": "Thông tin của Height_floor",
-     *               "project_size": "Thông tin của Project_size",
-     *               "investor": "Thông tin của Investor",
-     *               "constructor": "Thông tin của Constructor",
-     *               "hand_over": "Thông tin của Hand_over",
-     *               "deployment_time": "Thông tin của Deployment_time",
-     *               "building_density": "Mật độ",
-     *               "utilities": "Thông tin tiện ích",
-     *               "active_status": "Trạng thái hoạt động",
-     *               "image": [
-     *                   "http://example.com/path/to/1730018711_avatar_ad6a33b5-b01e-41d7-beb6-0ea1c0529fcd.jpeg",
-     *                   "http://example.com/path/to/1730018711_avatar_ad6a33b5-b01e-41d7-beb6-0ea1c0529fcd.jpeg"
-     *               ],
-     *               "name_contact": "Thông tin của Người liên hệ",
-     *               "phone_contact": "Thông tin của SDT liên hệ",
-     *               "status": "Thông tin của trạng thái",
-     *               "active_days": "Thông tin của ngày đăng",
-     *               "time_start": "Thông tin của thời gian thi công",
-     *               "district": "Thông tin của Quận/Huyện",
-     *               "ward": "Thông tin của Phường/Xã",
-     *               "province": "Thông tin của Tỉnh/Thành phố",
-     *               "location": "Thông tin của Khu vực",
-     *               "house_type": "Thông tin của Loại nhà"
-     *          }
-     *      ]
-     * }
-     * @response 404 {
-     *      "status": 404,
-     *      "message": "Đường dẫn hoặc bài đăng không tồn tại"
-     * }
-     * @response 500 {
-     *      "status": 500,
-     *      "message": "Thực hiện thất bại."
-     * }
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *     path="/api/v1/articles",
+     *     summary="DS Bài đăng",
+     *     description="Lấy danh sách bài đăng.",
+     *     tags={"Bài đăng"},
+     *     @OA\Parameter(
+     *         name="page",
+     *         in="query",
+     *         description="Trang hiện tại, page > 0.",
+     *         required=false,
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\Parameter(
+     *         name="limit",
+     *         in="query",
+     *         description="Số lượng bài viết trong 1 trang, limit > 0.",
+     *         required=false,
+     *         @OA\Schema(type="integer", example=10)
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Thực hiện thành công.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer", example=200),
+     *             @OA\Property(property="message", type="string", example="Thực hiện thành công."),
+     *             @OA\Property(
+     *                 property="data",
+     *                 type="array",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="id", type="integer", example=4),
+     *                     @OA\Property(
+     *                         property="owner",
+     *                         type="object",
+     *                         @OA\Property(property="fullname", type="string", example="Phạm Bảo"),
+     *                         @OA\Property(property="avatar", type="string", example="http://example.com/path/to/avatar.jpeg")
+     *                     ),
+     *                     @OA\Property(property="code", type="string", example="UF68751730018835"),
+     *                     @OA\Property(property="type", type="string", example="1"),
+     *                     @OA\Property(property="title", type="string", example="Thông tin của Title"),
+     *                     @OA\Property(property="slug", type="string", example="Thông tin của Slug"),
+     *                     @OA\Property(property="description", type="string", example="Thông tin của Description"),
+     *                     @OA\Property(property="area", type="string", example="Thông tin của Area"),
+     *                     @OA\Property(property="price", type="string", example="Thông tin của Price"),
+     *                     @OA\Property(property="price_consent", type="string", example="Thông tin của Price_consent"),
+     *                     @OA\Property(property="quantity", type="string", example="Thông tin của Quantity"),
+     *                     @OA\Property(property="height_floor", type="string", example="Thông tin của Height_floor"),
+     *                     @OA\Property(property="project_size", type="string", example="Thông tin của Project_size"),
+     *                     @OA\Property(property="investor", type="string", example="Thông tin của Investor"),
+     *                     @OA\Property(property="constructor", type="string", example="Thông tin của Constructor"),
+     *                     @OA\Property(property="hand_over", type="string", example="Thông tin của Hand_over"),
+     *                     @OA\Property(property="deployment_time", type="string", example="Thông tin của Deployment_time"),
+     *                     @OA\Property(property="building_density", type="string", example="Mật độ"),
+     *                     @OA\Property(property="utilities", type="string", example="Thông tin tiện ích"),
+     *                     @OA\Property(property="active_status", type="string", example="Trạng thái hoạt động"),
+     *                     @OA\Property(
+     *                         property="image",
+     *                         type="array",
+     *                         @OA\Items(type="string", example="http://example.com/path/to/image.jpg")
+     *                     ),
+     *                     @OA\Property(property="name_contact", type="string", example="Thông tin của Người liên hệ"),
+     *                     @OA\Property(property="phone_contact", type="string", example="Thông tin của SDT liên hệ"),
+     *                     @OA\Property(property="status", type="string", example="Thông tin của trạng thái"),
+     *                     @OA\Property(property="active_days", type="string", example="Thông tin của ngày đăng"),
+     *                     @OA\Property(property="time_start", type="string", example="Thông tin của thời gian thi công"),
+     *                     @OA\Property(property="district", type="string", example="Thông tin của Quận/Huyện"),
+     *                     @OA\Property(property="ward", type="string", example="Thông tin của Phường/Xã"),
+     *                     @OA\Property(property="province", type="string", example="Thông tin của Tỉnh/Thành phố"),
+     *                     @OA\Property(property="location", type="string", example="Thông tin của Khu vực"),
+     *                     @OA\Property(property="house_type", type="string", example="Thông tin của Loại nhà")
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Đường dẫn hoặc bài đăng không tồn tại.",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="integer", example=404),
+     *             @OA\Property(property="message", type="string", example="Đường dẫn hoặc bài đăng không tồn tại")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Thực hiện thất bại.",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="integer", example=500),
+     *             @OA\Property(property="message", type="string", example="Thực hiện thất bại.")
+     *         )
+     *     )
+     * )
      */
     public function index(ArticlesRequest $request)
     {

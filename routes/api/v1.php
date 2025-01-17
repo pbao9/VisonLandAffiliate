@@ -16,13 +16,6 @@ use Illuminate\Support\Facades\Route;
 // Dành cho khách vãng lai
 
 
-Route::controller(App\Api\V1\Http\Controllers\CustomerRegistrations\CustomerRegistrationsController::class)
-    ->prefix('/article-register')
-    ->as('articleRegister.')
-    ->middleware('api.guest')
-    ->group(function () {
-        Route::post('/add', 'add')->name('add');
-    });
 
 Route::prefix('/address')->middleware('api.guest')->group(function () {
     Route::controller(App\Api\V1\Http\Controllers\Address\ProvinceController::class)
@@ -120,6 +113,14 @@ Route::controller(App\Api\V1\Http\Controllers\Customers\CustomersController::cla
     });
 //***** -- Customers -- ******* //
 
+
+Route::controller(App\Api\V1\Http\Controllers\CustomerRegistrations\CustomerRegistrationsController::class)
+    ->prefix('/article-register')
+    ->as('articleRegister.')
+    ->middleware('api.guest')
+    ->group(function () {
+        Route::post('/add', 'add')->name('add');
+    });
 
 
 Route::middleware('auth:api')->group(function () {
