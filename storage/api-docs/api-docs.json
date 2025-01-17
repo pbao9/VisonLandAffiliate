@@ -1,0 +1,818 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation VisonLand Affiliate",
+        "description": "API này cho phép người dùng đọc thêm về các API được build trong dự án!",
+        "contact": {
+            "email": "pbao.business@gmail.com"
+        },
+        "version": "1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080/VisonLandAffiliate/"
+        }
+    ],
+    "paths": {
+        "/api/v1/address/district": {
+            "get": {
+                "tags": [
+                    "District"
+                ],
+                "summary": "Lấy danh sách quận huyện",
+                "description": "Lấy danh sách quận huyện với phân trang.",
+                "operationId": "aaf138eb61c8be5182092c73bde0707a",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Trang hiện tại, page > 0.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Số lượng bài viết trong 1 trang, limit > 0.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Thành công",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Thực hiện thành công."
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 7
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "parent 3"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string",
+                                                        "example": "parent-3"
+                                                    },
+                                                    "children": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 8
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "child 3"
+                                                                },
+                                                                "slug": {
+                                                                    "type": "string",
+                                                                    "example": "child-3"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "pagination": {
+                                            "properties": {
+                                                "current_page": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "total_pages": {
+                                                    "type": "integer",
+                                                    "example": 5
+                                                },
+                                                "has_prev": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_next": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 400
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Yêu cầu không hợp lệ."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/address/province": {
+            "get": {
+                "tags": [
+                    "Province"
+                ],
+                "summary": "Lấy danh sách tỉnh thành",
+                "description": "Lấy danh sách tỉnh thành với phân trang.",
+                "operationId": "861542f403973296dd962a7de70264e2",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Trang hiện tại, page > 0.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Số lượng bài viết trong 1 trang, limit > 0.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Thành công",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Thực hiện thành công."
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 7
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "parent 3"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string",
+                                                        "example": "parent-3"
+                                                    },
+                                                    "children": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 8
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "child 3"
+                                                                },
+                                                                "slug": {
+                                                                    "type": "string",
+                                                                    "example": "child-3"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "pagination": {
+                                            "properties": {
+                                                "current_page": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "total_pages": {
+                                                    "type": "integer",
+                                                    "example": 5
+                                                },
+                                                "has_prev": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_next": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 400
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Yêu cầu không hợp lệ."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/address/ward": {
+            "get": {
+                "tags": [
+                    "Ward"
+                ],
+                "summary": "Lấy danh sách phường xã",
+                "description": "Lấy danh sách phường xã với phân trang.",
+                "operationId": "6abaf3d1ffa21f5a22c3ab06177e77dd",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Trang hiện tại, page > 0.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Số lượng bài viết trong 1 trang, limit > 0.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Thành công",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Thực hiện thành công."
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 7
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "parent 3"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string",
+                                                        "example": "parent-3"
+                                                    },
+                                                    "children": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 8
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "child 3"
+                                                                },
+                                                                "slug": {
+                                                                    "type": "string",
+                                                                    "example": "child-3"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "pagination": {
+                                            "properties": {
+                                                "current_page": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "total_pages": {
+                                                    "type": "integer",
+                                                    "example": 5
+                                                },
+                                                "has_prev": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_next": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 400
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Yêu cầu không hợp lệ."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/areas": {
+            "get": {
+                "tags": [
+                    "Area"
+                ],
+                "summary": "Lấy Danh sách khu vực",
+                "description": "Lấy Danh sách khu vực với phân trang.",
+                "operationId": "6573624c33fa59280d88f3a3226d8825",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Trang hiện tại, page > 0.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Số lượng bài viết trong 1 trang, limit > 0.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Thành công",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Thực hiện thành công."
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 7
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "parent 3"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string",
+                                                        "example": "parent-3"
+                                                    },
+                                                    "children": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 8
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "child 3"
+                                                                },
+                                                                "slug": {
+                                                                    "type": "string",
+                                                                    "example": "child-3"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "pagination": {
+                                            "properties": {
+                                                "current_page": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "total_pages": {
+                                                    "type": "integer",
+                                                    "example": 5
+                                                },
+                                                "has_prev": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_next": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 400
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Yêu cầu không hợp lệ."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/articles": {
+            "get": {
+                "tags": [
+                    "Bài đăng"
+                ],
+                "summary": "DS Bài đăng",
+                "description": "Lấy danh sách bài đăng.",
+                "operationId": "64a63deb3de29dfed0ec9095cfc768fa",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Trang hiện tại, page > 0.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Số lượng bài viết trong 1 trang, limit > 0.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Thực hiện thành công.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Thực hiện thành công."
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 4
+                                                    },
+                                                    "owner": {
+                                                        "properties": {
+                                                            "fullname": {
+                                                                "type": "string",
+                                                                "example": "Phạm Bảo"
+                                                            },
+                                                            "avatar": {
+                                                                "type": "string",
+                                                                "example": "http://example.com/path/to/avatar.jpeg"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "code": {
+                                                        "type": "string",
+                                                        "example": "UF68751730018835"
+                                                    },
+                                                    "type": {
+                                                        "type": "string",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Title"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Slug"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Description"
+                                                    },
+                                                    "area": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Area"
+                                                    },
+                                                    "price": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Price"
+                                                    },
+                                                    "price_consent": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Price_consent"
+                                                    },
+                                                    "quantity": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Quantity"
+                                                    },
+                                                    "height_floor": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Height_floor"
+                                                    },
+                                                    "project_size": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Project_size"
+                                                    },
+                                                    "investor": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Investor"
+                                                    },
+                                                    "constructor": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Constructor"
+                                                    },
+                                                    "hand_over": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Hand_over"
+                                                    },
+                                                    "deployment_time": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Deployment_time"
+                                                    },
+                                                    "building_density": {
+                                                        "type": "string",
+                                                        "example": "Mật độ"
+                                                    },
+                                                    "utilities": {
+                                                        "type": "string",
+                                                        "example": "Thông tin tiện ích"
+                                                    },
+                                                    "active_status": {
+                                                        "type": "string",
+                                                        "example": "Trạng thái hoạt động"
+                                                    },
+                                                    "image": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "http://example.com/path/to/image.jpg"
+                                                        }
+                                                    },
+                                                    "name_contact": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Người liên hệ"
+                                                    },
+                                                    "phone_contact": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của SDT liên hệ"
+                                                    },
+                                                    "status": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của trạng thái"
+                                                    },
+                                                    "active_days": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của ngày đăng"
+                                                    },
+                                                    "time_start": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của thời gian thi công"
+                                                    },
+                                                    "district": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Quận/Huyện"
+                                                    },
+                                                    "ward": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Phường/Xã"
+                                                    },
+                                                    "province": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Tỉnh/Thành phố"
+                                                    },
+                                                    "location": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Khu vực"
+                                                    },
+                                                    "house_type": {
+                                                        "type": "string",
+                                                        "example": "Thông tin của Loại nhà"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Đường dẫn hoặc bài đăng không tồn tại.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 404
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Đường dẫn hoặc bài đăng không tồn tại"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Thực hiện thất bại.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 500
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Thực hiện thất bại."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "District",
+            "description": "District"
+        },
+        {
+            "name": "Province",
+            "description": "Province"
+        },
+        {
+            "name": "Ward",
+            "description": "Ward"
+        },
+        {
+            "name": "Area",
+            "description": "Area"
+        },
+        {
+            "name": "Bài đăng",
+            "description": "Bài đăng"
+        }
+    ]
+}
