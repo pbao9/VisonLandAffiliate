@@ -13,7 +13,6 @@ final class ArticleActiveStatus extends Enum implements LocalizedEnum
 {
     const Published = 1;
     const Draft = 2;
-    const Already = 3;
 
     public static function getDescription($value): string
     {

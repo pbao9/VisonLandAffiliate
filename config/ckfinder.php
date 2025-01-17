@@ -29,7 +29,7 @@ $config['authentication'] = '\App\Admin\Http\Middleware\CustomCKFinderAuth';
 /*============================ License Key ============================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'localhost:8080/2702-AppMuaBanBDS';
+$config['licenseName'] = 'localhost:8080/VisonLandAffiliate';
 $config['licenseKey'] = 'MJHJGFBK7NB1Q85CDN7HJST8MFFHT';
 
 /*============================ CKFinder Internal Directory ============================*/
@@ -98,7 +98,7 @@ $config['resourceTypes'][] = array(
     'name' => 'Images',
     'directory' => 'images',
     'maxSize' => 0,
-    'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
+    'allowedExtensions' => 'bmp,gif,jpeg,jpg,png,svg',
     'deniedExtensions' => '',
     'backend' => 'default'
 );
@@ -162,7 +162,7 @@ $config['forceAscii'] = false;
 $config['xSendfile'] = false;
 
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_debug
-$config['debug'] = false;
+$config['debug'] = true;
 
 /*==================================== Plugins ========================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_plugins

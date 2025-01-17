@@ -31,7 +31,7 @@ class SettingSeeder extends Seeder
             [
                 'setting_key' => 'site_logo',
                 'setting_name' => 'Logo',
-                'plain_value' => '/public/assets/images/logo.png',
+                'plain_value' => '/public/assets/images/logo.svg',
                 'type_input' => SettingTypeInput::Image,
                 'group' => SettingGroup::General,
                 //                'desc' => 'Logo thương hiệu'

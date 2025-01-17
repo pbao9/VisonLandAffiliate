@@ -93,7 +93,7 @@ class NotificationController extends Controller
 
     public function create()
     {
-        $usernames = User::pluck('username', 'id');
+        $usernames = User::pluck('fullname', 'id');
         return view($this->view['create'], [
             'status' => NotificationEnum::asSelectArray(),
             'usernames' => $usernames,

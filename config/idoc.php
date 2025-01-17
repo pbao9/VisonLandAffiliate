@@ -99,7 +99,7 @@ return [
     |
      */
 
-    'output' => '/2702-AppMuaBanBDS/docs/api/v1',
+    'output' => '/VisonLandAffiliate/docs/api/v1',
 
     'hide_download_button' => true,
 
