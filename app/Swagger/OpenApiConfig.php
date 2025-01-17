@@ -7,7 +7,7 @@ use OpenApi\Annotations as OA;
 /**
  * @OA\Info(
  *     title="API Documentation VisonLand Affiliate",
- *     version="2",
+ *     version="1",
  *     description="API này cho phép người dùng đọc thêm về các API được build trong dự án!",
  *     @OA\Contact(
  *         email="pbao.business@gmail.com"
