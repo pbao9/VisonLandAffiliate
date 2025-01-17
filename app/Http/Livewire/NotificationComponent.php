@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Admin\Repositories\Notification\NotificationRepositoryInterface;
+use App\Enums\Notification\NotificationEnum;
 use Livewire\Component;
 use App\Models\Notification;
 use Livewire\WithPagination;
