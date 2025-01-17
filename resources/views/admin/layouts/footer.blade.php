@@ -3,13 +3,14 @@
         <div class="row text-center align-items-center flex-row-reverse">
             <div class="col-lg-auto ms-lg-auto">
                 <ul class="list-inline list-inline-dots mb-0">
-                        <li class="list-inline-item">
-							@if(auth('admin')->user()->can('readAPIDoc'))
-								<a href="{{ asset(config('idoc.path')) }}" target="_blank" class="link-secondary">
-									{{ __('Documentation api') }}
-								</a>
-							@endif	
-                        </li>
+                    <li class="list-inline-item">
+                        @if (auth('admin')->user()->can('readAPIDoc'))
+                            <a href="{{ asset(config('l5-swagger.documentations.default.routes.api')) }}" target="_blank"
+                                class="link-secondary">
+                                {{ __('Documentation api') }}
+                            </a>
+                        @endif
+                    </li>
                     <li class="list-inline-item"><a href="#" class="link-secondary">License</a></li>
                     <li class="list-inline-item"><a href="#" target="_blank" class="link-secondary"
                             rel="noopener">Source code</a></li>
