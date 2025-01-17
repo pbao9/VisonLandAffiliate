@@ -33,7 +33,11 @@ class Notification extends Model
     }
     public function admin()
     {
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
+    public function getAllByAdmin($adminId)
+    {
+        return $this->where('admin_id', $adminId)->get();
     }
 
     public function getAdmin()

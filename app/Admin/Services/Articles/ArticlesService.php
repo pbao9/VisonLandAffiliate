@@ -3,7 +3,7 @@
 namespace App\Admin\Services\Articles;
 
 use App\Admin\Services\Articles\ArticlesServiceInterface;
-use  App\Admin\Repositories\Articles\ArticlesRepositoryInterface;
+use App\Admin\Repositories\Articles\ArticlesRepositoryInterface;
 use App\Models\Articles;
 use App\Admin\Traits\Setup;
 use App\Enums\Article\ArticleActiveStatus;
@@ -75,6 +75,8 @@ class ArticlesService implements ArticlesServiceInterface
                 'status' => NotificationEnum::NotSeen
             ]);
         }
+
+
         try {
             $this->data['image'] = $this->data['image'] ? explode(",", $this->data['image']) : null;
             $articles = $this->repository->update($this->data['id'], $this->data);

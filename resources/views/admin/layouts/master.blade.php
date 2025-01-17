@@ -3,6 +3,7 @@
 
 <head>
     @include('admin.layouts.head')
+    @livewireStyles
 </head>
 
 <body>
@@ -19,6 +20,7 @@
             @include('admin.layouts.modal.modal-delete')
         </div>
     </div>
+    @livewireScripts
     @include('admin.layouts.scripts')
     @include('admin.notification.scripts.firebase-script')
 

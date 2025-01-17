@@ -21,8 +21,6 @@
                             <h2>{{ __('Dashboard') }}</h2>
                         </div>
                         <div class="card-body">
-
-
                             <div class="col-12">
                                 <div class="row row-cards">
                                     <div class="col-sm-6 col-lg-3">
@@ -139,17 +137,13 @@
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
+            @livewire('notification-component')
         </div>
     </div>
 @endsection
